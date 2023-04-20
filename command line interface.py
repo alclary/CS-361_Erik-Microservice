@@ -13,6 +13,7 @@ while(1):
 
     if int(a) == 1:
         print(
+            "----------- ABOUT THIS APPLICATION ------------\n"
             "This application was developed using pytesseracts libray to covert image to text.\n"
             "It was created as a part of Oregon State Universities CS 361 class assignment.\n" 
             "The creators are Erik Blackowicz and Anthony Clary.\n")
@@ -22,8 +23,10 @@ while(1):
         
     
     elif int(a) == 2:
-        
-        print(a)
+        print(" \n")
+        print("----------- CONVERT JPEG to TEXT ------------\n")
+        in_path = input("Please enter the path to the .jpeg file you would like converted:")
+        print(in_path)
         break
     
     elif int(a) == 3:
@@ -34,3 +37,4 @@ while(1):
         print("Invalid input, please review the menu options again..\n")
         a = input("SELECT A NUMBER FROM THE MENU OPTIONS ABOVE: ")
         continue
+        
