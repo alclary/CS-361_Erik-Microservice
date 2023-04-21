@@ -1,0 +1,42 @@
+
+<!-- nav bar from base.html -->
+{% extends "navbar.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dispay page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>display page</title>
+</head>
+<body>
+
+  <h1> here is my converted text:</h1>
+
+
+  <button id="copy_text" type="button" class="btn btn-outline-primary">COPY TEXT
+    <span class="hidden-info">Will copy text to the clipboard. Once copied, paste text using 'Ctrl + V'. Or right-click then select 'Paste'</span>
+  </button>
+
+  <button id="download" type="button" class="btn btn-outline-secondary">DOWNLOAD
+    <span class="hidden-info">Automatically downloads a .txt file to your computer</span>
+  </button>
+
+  <button id="clear_display" type="button" class="btn btn-outline-success">CLEAR DISPLAY
+    <span class="hidden-info">Will delete text above</span>
+  </button>
+
+  <button id="upload" type="button" class="btn btn-outline-danger">UPLOAD
+    <span class="hidden-info">Clear display, select another image</span>
+  </button>
+
+</body>
+
+{% endblock content %}

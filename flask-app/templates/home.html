@@ -1,0 +1,24 @@
+<!-- nav bar from base.html -->
+{% extends 'navbar.html' %}
+
+
+{% block content %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<h1> Jpeg to Text Converter App</h1>
+
+    <div>
+        <label for="formFileLg" class="form-label">Select a file to convert:</label>
+        <input class="form-control form-control-lg" id="formFileLg" type="file">
+    </div>
+
+</body>
+</html>
+{% endblock content %}
