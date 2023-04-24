@@ -1,0 +1,3 @@
+# .gitignore - will ignore all files in this file.
+venv
+__pycache__

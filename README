@@ -1,0 +1,18 @@
+# --- RUN LOCALALLY -----
+# 1. open terminal 
+# 2. navigate to 'FLASK-APP' dir.
+# 3. run app by entering command "py app.py" or "flask run"
+# 4. go to http://127.0.0.1:5000/
+
+uses heroku for web server/hosting
+
+activate venv before running:
+while within flask-app run: "venv\Scripts\activate"
+
+# -- RUN Development app --
+to edit development app on heroku:
+- edit whatever you need
+- run "git add templates" - this is when 'templates' files was edited
+- commit by running: "git commit -m "SOME COMMENT ABOUT COMMIT""
+- push by running: "git push heroku master"
+- open new delopment: "heroku open"
