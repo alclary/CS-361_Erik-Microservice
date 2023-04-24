@@ -1,0 +1,78 @@
+
+<!-- nav bar from base.html -->
+{% extends "navbar.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>dispay page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<head>
+    <meta charset="UTF-8">
+    <title>display page</title>
+</head>
+<body>
+
+  <h1> Here is your converted text:</h1>
+  <p class="out_borders"> DISPLAY PARAGRAPH HERE.... This is my edit</p>
+  
+
+  <script>
+    // script for DOWNLOAD button confirmatory pop-up
+    const confirmDownload = () => {
+        const response = confirm("Are you sure you want download .txt file?");
+        if (response) {
+            /* write code to:
+            - take display data write to .txt file
+            - download .txt file to user's local computer
+            */
+            alert("File successfully downloaded.");
+        } 
+    }
+
+    const confirmClear = () => {
+        const response = confirm("Are you sure you want to clear the display text above. This will permanently delete all text data?");
+        if (response) {
+          // write code to clear display
+          alert("Display cleared!")
+        }
+    }
+
+    const confirmCopy = () => {
+          alert("Text copied to your clipboard!")
+    }
+    
+    const confirmUpload = () => {
+        const response = confirm("Uploading another image will delete previous text. Is that okay?");
+        if (response) {
+          // write code to open BROWSE again
+        } 
+    }
+  
+
+
+
+
+
+  </script>
+
+
+  <button id="copy_text" type="button" class="btn btn-outline-primary" title= "Will copy text to the clipboard.  Once copied, paste text using 'Ctrl + V'. Or right-click then select 'Paste'." onclick="confirmCopy()">COPY TEXT</button>
+
+  <button id="download" type="button" class="btn btn-outline-secondary" title= "Will automatically download converted text to a .txt file" onclick="confirmDownload()" >DOWNLOAD </button>
+
+  <button id="clear_display" type="button" class="btn btn-outline-success" title="Will delete text above" onclick="confirmClear()" >CLEAR DISPLAY</button>
+
+  <button id="upload" type="button" class="btn btn-outline-danger" title="Select another .jpeg image to convert" onclick="confirmUpload()">UPLOAD </button>
+
+</body>
+
+
+
+
+{% endblock content %}

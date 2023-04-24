@@ -1,0 +1,11 @@
+body{
+  background-color: rgb(190, 30, 30);
+}
+
+.out_borders{
+  width: 200px;
+  height: 100px;
+  padding: 20px;
+  border: 1px solid darkorange;
+  border-radius: 8px;
+}
