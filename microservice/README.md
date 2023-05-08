@@ -68,5 +68,8 @@ Clients can receive the JSON object using the call:
     
 ### UML Sequence Diagram
  ![image](https://user-images.githubusercontent.com/67238817/236879142-eff1467e-1a6b-4973-b374-b0c5f4f7bb29.png)
+ 
+### Citations
+Referenced ZeroMQ socket template to setup synchronous json_server.py and json_client.py connection, found here: https://zguide.zeromq.org/docs/chapter1/
 
 
