@@ -1,4 +1,4 @@
-# JSON Conversion Microservice
+# JSON Object Microservice
 
 ## About
 This is a microservice impelmented to transforms JSON objects from the Sample Input to the Sample Output formatting, listed below.
