@@ -48,14 +48,18 @@ output_data =
 
 ### Sending/Receiving Data
 Client can sends a JSON object using the call:
+
     **socket.send_json(input_data)**
     
 Server receives data using the call:
+
     **request = socket.recv_json()**
 Server then refactors the JSON object to the sample output formatting (seen above) and sends a JSON object back to the client using:
+
     **socket.send_json(output_data)**
     
 Clients can receive the JSON object using the call:
+
     **message = socket.recv_json()**
     
 ### UML Sequence Diagram
