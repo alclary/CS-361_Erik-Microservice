@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "section1": {
+      "type": "null",
+      "title": "section1_title",
+      "description": "section1_desc_optional"
+    },
+    "checkbox1.1": {
+      "type": "boolean",
+      "title": "checkbox1.1_text",
+      "description": "checkbox1_desc_optional"
+    },
+    "checkbox1.2": {
+      "type": "boolean",
+      "title": "checkbox1.2_text"
+    }
+  }
+}

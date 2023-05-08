@@ -1,0 +1,17 @@
+{
+  "sections": [
+    {
+      "checkItems": [
+        {
+          "checkboxText": "checkbox1.1_text",
+          "checkboxDesc": "checkbox1.1_desc_optional"
+        },
+        {
+          "checkboxText": "checkbox1.2_text"
+        }
+      ],
+      "sectionTitle": "section1_title",
+      "sectionDesc": "section1_desc_optional"
+    }
+  ]
+}
