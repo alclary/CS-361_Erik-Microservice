@@ -6,7 +6,7 @@ This microservice uses synchronous ZeroMQ sockets for the requests/responses dat
 
 ### Dependencies:
 
-import zmq
+  import zmq
 
 ### Sample Input:
 input_data = 
