@@ -3,9 +3,10 @@ import json
 
 # cite: https://zguide.zeromq.org/docs/chapter1/
 # Set up the ZeroMQ context and socket
+PORT = 5557
 context = zmq.Context()
 socket = context.socket(zmq.REQ)
-socket.connect("tcp://localhost:5557")
+socket.connect("tcp://localhost:" + str(PORT))
 
 input_data = {
   "sections": [
