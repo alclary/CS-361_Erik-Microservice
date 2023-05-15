@@ -2,7 +2,7 @@
 
 ## About
 This is a microservice impelmented to transforms JSON objects from the _Sample Input_ to the _Sample Output_ formatting, listed below.
-This microservice uses synchronous ZeroMQ sockets for the requests/responses data transfer. Review the Sample Input / Sample Output sections to understand the expected input & output results. Example calls and a UML sequence diagram are listed below to show how communication between the server & client occur.
+This microservice uses synchronous ZeroMQ sockets for the requests/responses data transfer. Review the Sample Input / Sample Output sections to understand the expected input & output results. Example calls and a UML sequence diagram are listed below to show how communication between the server & client occur. The microservice file is listed as _json_server.py_.
 
 ### Dependencies:
 
