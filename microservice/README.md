@@ -9,11 +9,12 @@ This microservice uses synchronous ZeroMQ sockets for the requests/responses dat
     import zmq
     import json
 
-### Socket Setup - uses port# 5557
-    
+### Socket Setup 
+
+    PORT = 5557
     context = zmq.Context()
     socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:5557")
+    socket.bind("tcp://*:" + str(PORT))
 
 ### Sample Input:
 input_data = 
