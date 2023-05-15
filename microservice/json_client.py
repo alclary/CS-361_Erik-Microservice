@@ -1,3 +1,5 @@
+# This is a test file for sending data to 'json_server.py'
+
 import zmq
 import json
 
