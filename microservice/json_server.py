@@ -3,9 +3,10 @@ import json
 
 # cite: https://zguide.zeromq.org/docs/chapter1/
 # Set up the ZeroMQ context and socket
+PORT = 5557
 context = zmq.Context()
 socket = context.socket(zmq.REP)
-socket.bind("tcp://*:5557")
+socket.bind("tcp://*:" + str(PORT))
 
 # function to handle http requests
 def handle_request(request):
