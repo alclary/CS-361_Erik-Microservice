@@ -1,24 +1,18 @@
 # JSON Object Microservice
 
 ## About
-This microservice is impelmented to transforms JSON objects from the _Sample Input Data_ to the _Sample Output Data_ formatting, listed below.
-It utilizes synchronous ZeroMQ sockets for the data transfer between the server and the client. Please review the _Sample Input_ and  _Sample Output_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is listed as _json_server.py_.
+This is a Python-based microservice that transforms JSON objects from a specific input format to the distinct output format described below. It utilizes synchronous ZeroMQ sockets for the data transfer between the server and the client. Please review the _Sample Input Data_ and  _Sample Output Data_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is named _json_server.py_.
 
 ### Dependencies:
 ```
-   import zmq
-   import json
-   import signal
-   import sys
+   import zmq        # ZeroMQ library for messaging and socket communication
+   import json       # JSON library for wokring with JSON data
+   import signal     # Allows for python signal handling 
+   import sys        # Allows for manipulation of python runtime environment
 ```
-### Socket Setup 
-
-    PORT = 5557
-    context = zmq.Context()
-    socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:" + str(PORT))
 
 ### Sample Input Data:
+The input JSON object should follow the structure below:
 
 ```json
 {
@@ -41,7 +35,7 @@ It utilizes synchronous ZeroMQ sockets for the data transfer between the server 
 ```
 
 ### Sample Output Data:
-
+The ouput JSON object will be in the following format:
 ```json
 {
    "type": "object",
@@ -63,23 +57,20 @@ It utilizes synchronous ZeroMQ sockets for the data transfer between the server 
    }
 }
 ```
+### Socket Setup 
+Below is the ZeroMQ socket setup:
 
-### Sending/Receiving Data
-The client sends a JSON object using the following call:
-
-    socket.send_json(input_data)
+    PORT = 5557
+    context = zmq.Context()
+    socket = context.socket(zmq.REP)
+    socket.bind("tcp://*:" + str(PORT))
     
-The server receives the data using the following call:
-
-    request = socket.recv_json()
-The server then refactors the JSON object to the sample output formatting (seen above) and sends a JSON object back to the client using:
-
-    socket.send_json(output_data)
-    
-Clients can receive the JSON object using the call:
-
-    Clients can receive the JSON object using the following call:
-
+### Communcation of Data
+1. The client sends the input JSON object to the server using **socket.send_json()** .
+2. The server recieves teh JSON object using the **socket.recv_json()** method.
+3. The server process and transforms the received JSON object, creating a newly formatted JSON object.
+4. The server sends the output JSON object back to the client using the **socket.send_json()** method.
+5. The client receives the modified JSON object using **socket.recv_json()**.
     
 ### UML Sequence Diagram
  ![image](https://user-images.githubusercontent.com/67238817/236879142-eff1467e-1a6b-4973-b374-b0c5f4f7bb29.png)
