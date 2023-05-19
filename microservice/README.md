@@ -1,13 +1,15 @@
 # JSON Object Microservice
 
 ## About
-This is a microservice impelmented to transforms JSON objects from the _Sample Input_ to the _Sample Output_ formatting, listed below.
-This microservice uses synchronous ZeroMQ sockets for the requests/responses data transfer. Review the Sample Input / Sample Output sections to understand the expected input & output results. Example calls and a UML sequence diagram are listed below to show how communication between the server & client occur. The microservice file is listed as _json_server.py_.
+This microservice is impelmented to transforms JSON objects from the _Sample Input_ to the _Sample Output_ formatting, listed below.
+It utilizes synchronous ZeroMQ sockets for the data transfer between the server and the client. Please review the _Sample Input_ and  _Sample Output_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is listed as _json_server.py_.
 
 ### Dependencies:
 
-    import zmq
-    import json
+   import zmq
+   import json
+   import signal
+   import sys
 
 ### Socket Setup 
 
@@ -17,6 +19,7 @@ This microservice uses synchronous ZeroMQ sockets for the requests/responses dat
     socket.bind("tcp://*:" + str(PORT))
 
 ### Sample Input:
+'''json
 input_data = 
 {
   "sections": [
@@ -35,8 +38,10 @@ input_data =
     }
   ]
 }
+'''
 
 ### Sample Output:
+'''json
 output_data =
 {
   "type": "object",
@@ -57,6 +62,7 @@ output_data =
     }
   }
 }
+'''
 
 ### Sending/Receiving Data
 Client can sends a JSON object using the call:
