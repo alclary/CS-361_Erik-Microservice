@@ -77,7 +77,7 @@ signal.signal(signal.SIGINT, signal_handler)
 while True:
 
     try:
-        # Wait for an incoming request, zmq.NOBLOCK allows for signal interruption 
+        # Wait for an incoming request, zmq.NOBLOCK allows for signal interruption prior to recieved request
         request = socket.recv_json(zmq.NOBLOCK)
 
         # data transformation
