@@ -1,5 +1,7 @@
 import zmq
 import json
+import signal
+import sys
 
 # cite: https://zguide.zeromq.org/docs/chapter1/
 # Set up the ZeroMQ context and socket
@@ -7,6 +9,7 @@ PORT = 5557
 context = zmq.Context()
 socket = context.socket(zmq.REP)
 socket.bind("tcp://*:" + str(PORT))
+interrupted = False  # used for CTRL+C signal handling
 
 # function to handle http requests
 def handle_request(request):
@@ -39,7 +42,7 @@ def handle_request(request):
       # combine with output_data
       output_data["properties"][sect_key] = sect_data
 
-      # nested loop over sect's 'checkItems' to modify data
+      # nested loop over sect's 'checkItems' 
       for check_index, check_item in enumerate(sect["checkItems"]):
           
           # create key
@@ -62,17 +65,32 @@ def handle_request(request):
     output_data = json.dumps(output_data)
     return (output_data)
 
+# will cause the stop of server if CTRL+C hit in terminal
+def signal_handler(signum, frame):
+    print("Server stopped")
+    sys.exit(0)
 
-print("json conversion server running....")
+print(f"json conversion server running on port #{PORT} ....")
+signal.signal(signal.SIGINT, signal_handler)
+
 # infinite loop to process .recv / .send 
 while True:
-    # Wait for an incoming request
-    request = socket.recv_json()
 
-    # data transformation
-    response = handle_request(request)
+    try:
+        # Wait for an incoming request, zmq.NOBLOCK allows for signal interruption 
+        request = socket.recv_json(zmq.NOBLOCK)
 
-    # Send the response back to the client
-    socket.send_json(response)
-    print("response sent successfully")
+        # data transformation
+        response = handle_request(request)
+
+        # Send the response back to the client
+        socket.send_json(response)
+        print("response sent successfully")
+    
+    # check for server termination using CTRL+C
+    except zmq.ZMQError as error:
+        if interrupted:
+            break
+        else:
+            continue
 
