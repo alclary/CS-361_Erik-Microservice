@@ -20,46 +20,48 @@ It utilizes synchronous ZeroMQ sockets for the data transfer between the server 
 
 ### Sample Input:
 ```json
-input_data = {
-        "sections": [
-          {
-            "checkItems": [
-              {
-                "checkboxText": "checkbox1.1_text",
-                "checkboxDesc": "checkbox1.1_desc_optional"
-              },
-              {
-                "checkboxText": "checkbox1.2_text"
-              }
-            ],
-            "sectionTitle": "section1_title",
-            "sectionDesc": "section1_desc_optional"
-          }
-        ]
-      }
+input_data = 
+{
+   "sections": [
+    {
+      "checkItems": [
+        {
+          "checkboxText": "checkbox1.1_text",
+          "checkboxDesc": "checkbox1.1_desc_optional"
+        },
+        {
+          "checkboxText": "checkbox1.2_text"
+        }
+      ],
+      "sectionTitle": "section1_title",
+      "sectionDesc": "section1_desc_optional"
+    }
+   ]
+}
 ```
 
 ### Sample Output:
 ```json
-output_data = {
-        "type": "object",
-        "properties": {
-          "section1": {
-            "type": "null",
-            "title": "section1_title",
-            "description": "section1_desc_optional"
-          },
-          "checkbox1.1": {
-            "type": "boolean",
-            "title": "checkbox1.1_text",
-            "description": "checkbox1_desc_optional"
-          },
-          "checkbox1.2": {
-            "type": "boolean",
-            "title": "checkbox1.2_text"
-          }
-        }
-      }
+output_data = 
+{
+   "type": "object",
+   "properties": {
+    "section1": {
+      "type": "null",
+      "title": "section1_title",
+      "description": "section1_desc_optional"
+    },
+    "checkbox1.1": {
+      "type": "boolean",
+      "title": "checkbox1.1_text",
+      "description": "checkbox1_desc_optional"
+    },
+    "checkbox1.2": {
+      "type": "boolean",
+      "title": "checkbox1.2_text"
+    }
+   }
+}
 ```
 
 ### Sending/Receiving Data
