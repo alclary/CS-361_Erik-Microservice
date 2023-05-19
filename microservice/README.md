@@ -1,7 +1,7 @@
 # JSON Conversion Microservice
 
 ## About
-This is a Python-based microservice that transforms JSON objects from a specific input format to a separate output format, as described below. It utilizes synchronous ZeroMQ sockets for the data transfer between the server and the client. Please review the _Sample Input Data_ and  _Sample Output Data_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is named _json_server.py_.
+This is a Python-based microservice that transforms JSON objects from a specific input format to a separate output format, as described below. It utilizes synchronous ZeroMQ sockets for the data transfer between the server and the client. Please review the _Sample Input Data_ and  _Sample Output Data_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is named **_json_server.py_**.
 
 ### Dependencies:
 ```
