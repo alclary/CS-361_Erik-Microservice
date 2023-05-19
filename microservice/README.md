@@ -66,11 +66,11 @@ Below is the ZeroMQ socket setup:
     socket.bind("tcp://*:" + str(PORT))
     
 ### Communcation of Data
-1. The client sends the input JSON object to the server using **socket.send_json()** .
-2. The server recieves the JSON object using the **socket.recv_json()** method.
+1. The client sends the input JSON object to the server using '**socket.send_json()**'.
+2. The server recieves the JSON object using the '**socket.recv_json()**' method.
 3. The server process and transforms the received JSON object, creating a newly formatted JSON object.
-4. The server sends this newly formatted output JSON object back to the client using the **socket.send_json()** method.
-5. The client receives the output JSON object using **socket.recv_json()**.
+4. The server sends this newly formatted output JSON object back to the client using the '**socket.send_json()**' method.
+5. The client receives the output JSON object using '**socket.recv_json()**'.
     
 ### UML Sequence Diagram
  ![image](https://user-images.githubusercontent.com/67238817/236879142-eff1467e-1a6b-4973-b374-b0c5f4f7bb29.png)
