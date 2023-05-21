@@ -1,14 +1,15 @@
 # JSON Conversion Microservice
 
 ## About
-This is a Python-based microservice that transforms JSON objects from a specific input format to a separate output format, as described below. It utilizes synchronous ZeroMQ sockets for the data transfer between the server and the client. Please review the _Sample Input Data_ and  _Sample Output Data_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is named **_json_server.py_**.
+This is a Python-based microservice that transforms JSON objects from a specific input format to a separate output format, as described below. It utilizes asynchronous websockets for the data transfer between the server and the client. Please review the _Sample Input Data_ and  _Sample Output Data_ sections below to understand the expected input and output results. Example calls and a UML sequence diagram are also provided to illustrate the communication flow between the server and client. The microservice file is named **_json_server.py_**.
 
 ### Dependencies:
 ```
-   import zmq        # ZeroMQ library for messaging and socket communication
-   import json       # JSON library for wokring with JSON data
-   import signal     # Allows for python signal handling 
-   import sys        # Allows for manipulation of python runtime environment
+   import asyncio                         # Library providing concurrent code execution via async/await syntax
+   import json                            # JSON library for wokring with JSON data
+   import signal                          # Allows for python signal handling 
+   import sys                             # Allows for manipulation of python runtime environment
+   from websockets.server import serve    # Websockets library for python
 ```
 
 ### Sample Input Data:
@@ -57,25 +58,23 @@ The ouput JSON object will be in the following format:
    }
 }
 ```
-### Socket Setup 
-Below is the ZeroMQ socket setup:
+### Websocket Setup 
+Below is the websockets config variables:
 
+    HOST = 'localhost'
     PORT = 5557
-    context = zmq.Context()
-    socket = context.socket(zmq.REP)
-    socket.bind("tcp://*:" + str(PORT))
     
 ### Communcation of Data
-1. The client sends the input JSON object to the server using '**socket.send_json()**'.
-2. The server recieves the JSON object using the '**socket.recv_json()**' method.
-3. The server process and transforms the received JSON object, creating a newly formatted JSON object.
-4. The server sends this newly formatted output JSON object back to the client using the '**socket.send_json()**' method.
-5. The client receives the output JSON object using '**socket.recv_json()**'.
+1. The client sends the input JSON object to the server using '**websocket.send()**'.
+2. The server awaits a websocket message and calls **worker_function()** callback on receipt.
+3. The server process and transforms the received JSON object via **handle_request()** function, creating a newly formatted JSON object.
+4. The server sends this newly formatted output JSON object back to the client using the '**websocket.send()**' method.
+5. The client receives the output JSON object using '**websocket.recv()**'.
     
 ### UML Sequence Diagram
  ![image](https://user-images.githubusercontent.com/67238817/236879142-eff1467e-1a6b-4973-b374-b0c5f4f7bb29.png)
  
 ### Citations
-Referenced ZeroMQ socket template to setup synchronous json_server.py and json_client.py connection, found here: https://zguide.zeromq.org/docs/chapter1/
+Referenced websockets quickstart templates to setup asynchronous json_server.py and json_client.py connection, found here: https://websockets.readthedocs.io/en/stable/
 
 
