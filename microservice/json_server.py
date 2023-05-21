@@ -1,14 +1,13 @@
-import zmq
+import sys
 import json
 import signal
-import sys
+import asyncio
+from websockets.server import serve
 
 # cite: https://zguide.zeromq.org/docs/chapter1/
-# Set up the ZeroMQ context and socket
+# Set up websocket config
+HOST = 'localhost'
 PORT = 5557
-context = zmq.Context()
-socket = context.socket(zmq.REP)
-socket.bind("tcp://*:" + str(PORT))
 interrupted = False  # used for CTRL+C signal handling
 
 # function to handle http requests
@@ -65,6 +64,11 @@ def handle_request(request):
     output_data = json.dumps(output_data)
     return (output_data)
 
+async def worker_function(websocket):
+    async for message in websocket:
+        await websocket.send(handle_request(json.loads(message)))
+        print("response sent successfully")
+
 # will cause the stop of server if CTRL+C hit in terminal
 def signal_handler(signum, frame):
     print("Server stopped")
@@ -73,24 +77,10 @@ def signal_handler(signum, frame):
 print(f"json conversion server running on port #{PORT} ....")
 signal.signal(signal.SIGINT, signal_handler)
 
-# infinite loop to process .recv / .send 
-while True:
+# infinite loop to process .recv / .send
 
-    try:
-        # Wait for an incoming request, zmq.NOBLOCK allows for signal interruption prior to recieved request
-        request = socket.recv_json(zmq.NOBLOCK)
+async def main():
+    async with serve(worker_function, HOST, PORT):
+        await asyncio.Future() # run forever
 
-        # data transformation
-        response = handle_request(request)
-
-        # Send the response back to the client
-        socket.send_json(response)
-        print("response sent successfully")
-    
-    # check for server termination using CTRL+C
-    except zmq.ZMQError as error:
-        if interrupted:
-            break
-        else:
-            continue
-
+asyncio.run(main())
