@@ -36,7 +36,7 @@ def handle_request(request):
 
       # append 'description' if it exists
       descript = sect.get("sectionDesc")
-      if descript != "NULL" and descript is True:
+      if descript and descript.lower() != "null":
           sect_data["description"] = descript
 
       # combine with output_data
@@ -56,7 +56,7 @@ def handle_request(request):
 
           # append 'description' if it exists
           descript = check_item.get("checkboxDesc")
-          if descript != "NULL" and descript is True:
+          if descript and descript.lower() != "null":
               checkbox_data["description"] = descript
 
           # combine with output_data
